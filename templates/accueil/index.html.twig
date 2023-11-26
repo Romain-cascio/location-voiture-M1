@@ -1,0 +1,106 @@
+{# templates/accueil/index.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block head %}
+    {{ parent() }}
+{% endblock %}
+
+
+{% block stylesheets %}
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Arial', sans-serif;
+    width:100vw;
+    height:100vh;
+}
+
+.background{
+    margin: 0;
+    padding: 0;
+    background-image: url('https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    background-size: cover;
+    text-align: center; 
+    height:100%;
+    width:100%;
+}
+
+h1 {
+    color: black;
+}
+h3 {
+    color: black;
+}
+
+.flex-wrap{
+    display: flex;
+    min-height: 100vh;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.titre_accueil{
+    padding-top: 10%;
+    font-size: 4.5rem;
+}
+
+.sub-title {
+    padding-top: 1%;
+    font-size: 1.5rem;
+}
+
+.search-form{
+    justify-content: center;
+    height: 10%;
+    display: flex;
+    flex-direction: row;
+}
+
+.form-field{
+    background-color: rgba(255,255,255,0.7);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.search-button {
+    padding-left: 2%;
+    padding-right: 2%;
+    background-color: rgba(50,205,50,0.7);
+    color: green;
+}
+</style>
+{% endblock %}
+
+{% block body %}
+    <div class="background">
+        <div class="flex-wrap">
+        <div class="titre_accueil">
+            <h1>Recherche de véhicules</h1>
+        </div>
+        <div class="search-form">
+            <div class="form-field">
+            <form method="post" action="{{ path('app_accueil') }}">
+                    {{ form_row(form.dateDebut) }}
+                    {{ form_row(form.dateFin) }}
+                    {{ form_widget(form.submit) }}
+            </form>
+            </div>
+        </div>
+        </div>
+    </div>
+{% endblock %}

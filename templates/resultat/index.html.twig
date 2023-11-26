@@ -1,0 +1,123 @@
+{# templates/accueil/resultats.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block head %}
+    {{ parent() }}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Arial', sans-serif;
+    width:100vw;
+    height:100vh;
+}
+
+h1 {
+    color: black;
+}
+
+h3 {
+    color: black;
+}
+
+.result-title{
+    padding-top: 5%;
+    padding-bottom: 5%;
+    font-size: 4.5rem;
+}
+
+.results-bg {
+    background-image: url('/finishline.jpg');
+    background-size: cover;
+    text-align: center;
+    background-position: center center;
+    padding: 0;
+}
+
+.container{
+    margin: 0;
+    padding: 0;
+    width:100%;
+    display: flex;
+    min-height: 100vh;
+    height: 100%;
+    flex-direction: column;
+}
+
+.card-container {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    align-self: center;
+}
+
+.card{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 2%;
+}
+
+.card-img{
+    width: 40%;
+    
+}
+
+.card-body{
+    width:60%;
+    padding: 4%;
+}
+
+.card-button {
+    background-color: green;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px; /* Ajout de l'espace entre le texte et le bouton */
+}
+
+    </style>
+{% endblock %}
+
+
+{% block title %}Résultats de Recherche{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="results-bg">
+            <h1 class="result-title">Résultats de recherche</h1>
+        </div>
+        <div class="card-container">
+            {% for vehicule in resultats %}
+                <div class="card">
+                    <img src="{{ asset(vehicule.photo) }}" alt="Photo du véhicule" class="card-img">
+                    <div class="card-body">
+                        <h1 class="card-title">{{ vehicule.titre }}</h1>
+                        <p>{{ vehicule.description }}</p>
+                        <p class="card-prix"> {{ vehicule.prixJournalier }} € </p>
+                        <button class="card-button">Réserver</button>
+                    </div>
+                </div>    
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+
+
+

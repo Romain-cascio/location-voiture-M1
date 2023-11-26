@@ -1,0 +1,25 @@
+{# templates/accueil/resultats.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block head %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    <h1>Résultats de la Recherche</h1>
+
+    {% if resultats is not empty %}
+        <ul>
+            {% for vehicule in resultats %}
+                <li>
+                    {{ vehicule.titre }} - {{ vehicule.marque }} - {{ vehicule.modele }}
+                    {% if vehicule.photo %}
+                        <img src="{{ vehicule.photo }}" alt="{{ vehicule.titre }}">
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Aucun véhicule disponible pour les dates spécifiées.</p>
+    {% endif %}
+{% endblock %}
